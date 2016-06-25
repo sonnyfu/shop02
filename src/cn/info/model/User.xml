@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="cn.info.model.User">
+ 	<insert id="add" parameterType="User">
+ 	insert into t_user (username,password,nickname,type,status) 
+ 	value(#{username},#{password},#{nickname},#{type},#{status})
+ 	</insert>
+ 	<delete id="delete" parameterType="int">
+ 		delete from t_user where id=#{id} 
+ 	</delete>
+ 	<update id="update" parameterType="User">
+ 		update t_user set username=#{username} where id=#{id} 
+ 	</update>
+ 	
+ 	<select id="load" parameterType="int" resultType="User">
+ 		select * from t_user where id=#{id}
+ 	</select>
+ 	
+ 	<select id="list" parameterType="int" resultType="User">
+ 		select * from t_user limit #{pageIndex},#{pageSize}
+ 	</select>
+ 	
+ </mapper>
